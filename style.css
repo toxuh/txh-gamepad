@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+}
+
+#root > div {
+    background-color: #000;
+    border-radius: 50%;
+    height: 10px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+}
