@@ -1,0 +1,24 @@
+{
+  "name": "txh-gamepad",
+  "version": "0.0.1a",
+  "description": "Gamepad API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toxuh/xbox-controller-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toxuh/xbox-controller-game/issues"
+  },
+  "homepage": "https://github.com/toxuh/xbox-controller-game#readme",
+  "dependencies": {
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.4"
+  }
+}
