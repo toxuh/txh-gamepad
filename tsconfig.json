@@ -6,8 +6,8 @@
     "module": "es6",
     "target": "es5",
     "jsx": "preserve",
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports" : true,
-    "esModuleInterop" : true
+    "esModuleInterop" : true,
   }
 }

@@ -1,0 +1,16 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "prettier/prettier": "error",
+        "no-console": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["src/**/*.d.ts"]
+    }
+}
