@@ -9,10 +9,10 @@ const txhGamepad = (
       type: "default",
     },
 
-    onLeftStickMove = (e: number[]) => console.log(e),
-    onRightStickMove = (e: number[]) => console.log(e),
-    onConnect = () => console.log("Your gamepad connected"),
-    onDisconnect = () => console.log("Your gamepad was disconnected"),
+    onLeftStickMove,
+    onRightStickMove,
+    onConnect,
+    onDisconnect,
   } = {} as AppProperties
 ): AppReturnType => {
   const errors = [] as Error[];
@@ -30,8 +30,11 @@ const txhGamepad = (
       const controller: Gamepad &
         XBoxVibrationActuatorAPI = navigator.getGamepads()[0];
 
+      if (typeof onConnect === "function") {
+        onConnect();
+      }
+
       connected = true;
-      onConnect();
 
       vibrate = () => {
         controller.vibrationActuator.playEffect("dual-rumble", {
@@ -52,20 +55,28 @@ const txhGamepad = (
       };
 
       pollInterval = setInterval(() => {
-        onLeftStickMove([
-          getCalibratedValue(navigator.getGamepads()[0].axes[0]),
-          getCalibratedValue(navigator.getGamepads()[0].axes[1]),
-        ]);
-        onRightStickMove([
-          getCalibratedValue(navigator.getGamepads()[0].axes[2]),
-          getCalibratedValue(navigator.getGamepads()[0].axes[3]),
-        ]);
+        if (typeof onLeftStickMove === "function") {
+          onLeftStickMove([
+            getCalibratedValue(navigator.getGamepads()[0].axes[0]),
+            getCalibratedValue(navigator.getGamepads()[0].axes[1]),
+          ]);
+        }
+
+        if (typeof onRightStickMove === "function") {
+          onRightStickMove([
+            getCalibratedValue(navigator.getGamepads()[0].axes[2]),
+            getCalibratedValue(navigator.getGamepads()[0].axes[3]),
+          ]);
+        }
       }, pollingRate);
     });
 
     window.addEventListener("gamepaddisconnected", () => {
+      if (typeof onDisconnect === "function") {
+        onDisconnect();
+      }
+
       connected = false;
-      onDisconnect();
 
       clearInterval(pollInterval);
     });

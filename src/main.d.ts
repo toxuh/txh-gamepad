@@ -30,8 +30,8 @@ interface AppProperties {
 
   onConnect?: () => void;
   onDisconnect?: () => void;
-  onLeftStickMove?: () => void;
-  onRightStickMove?: () => void;
+  onLeftStickMove?: (valuesArray: number[]) => void;
+  onRightStickMove?: (valuesArray: number[]) => void;
 }
 
 interface AppReturnType {
